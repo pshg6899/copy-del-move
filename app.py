@@ -21,13 +21,10 @@ def hello_world():
 @app.route('/copy', methods=['POST'])
 def doCopyFile():
     document_path = request.json['document_path']
-    #document_path2 = request.json['document_path2']
+    document_path2 = request.json['document_path2']
 
-    filenames = document_path.split('.')
-    document_path2 = filenames[0] + "20"
-    document_path2 = document_path2 + '.' + filenames[1]
 
-    document_path2 = document_path2
+
     os.system('cp ' + document_path + ' ' + document_path2)
 
     res = {
@@ -37,7 +34,7 @@ def doCopyFile():
 
     jsonRtn = jsonify(res)
 
-    number = (document_path, document_path2)
+
     print(document_path +  ' ' + document_path2)
 
     return jsonRtn
